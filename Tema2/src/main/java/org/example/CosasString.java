@@ -69,5 +69,4 @@ public class CosasString {
             System.out.println("Las palabras " + palabra3 + " y " + palabra4 + " son distintas.");
         }
     }
-
 }
