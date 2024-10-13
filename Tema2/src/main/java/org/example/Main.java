@@ -7,11 +7,12 @@ public class Main {
 //        CosasString cosasString = new CosasString();
 //        cosasString.caracteres();
 
-        Bateria bateria = new Bateria();
-        bateria.bateria_1();
+//        Bateria bateria = new Bateria();
+//        bateria.bateria_1();
         //bateria.bateria_4();
 
-
+        Practicas practicas = new Practicas();
+        practicas.practica1();
 
     }
 }
