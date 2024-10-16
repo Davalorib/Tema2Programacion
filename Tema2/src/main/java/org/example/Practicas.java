@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Practicas {
 
-    public void practica1(){
+    public void practica1() {
 
         Scanner entrada = new Scanner(System.in);
 
@@ -16,14 +16,14 @@ public class Practicas {
 
         System.out.println("Introduce tu fecha de nacimiento en formato dd/mm/aaaa: ");
 
-        while(r1) {
+        while (r1) {
             try {
                 String fecha = entrada.nextLine();
 
                 char barra1 = fecha.charAt(2);//cojo la primera barra
                 char barra2 = fecha.charAt(5);//cojo la segunda barra
 
-                if (barra1 != '/' || barra2 != '/'){//sinceramente estuve probando un monton y con ' en vez de " me funciono, asi que asi se queda
+                if (barra1 != '/' || barra2 != '/') {//sinceramente estuve probando un monton y con ' en vez de " me funciono, asi que asi se queda
 
                     System.out.println("Por favor, usa el formato correcto.");
                     System.out.println("Introduce tu fecha de nacimiento en formato dd/mm/aaaa: ");
@@ -44,8 +44,8 @@ public class Practicas {
                         System.out.println("Por favor, introduce unos números válidos: ");
                     }
                 }
-            //el 1º para cuando coje algo que no es numero, el 2º para no poner letras, el 3º por si no se pone nada
-            }catch(NumberFormatException | InputMismatchException | StringIndexOutOfBoundsException er){
+                //el 1º para cuando coje algo que no es numero, el 2º para no poner letras, el 3º por si no se pone nada
+            } catch (NumberFormatException | InputMismatchException | StringIndexOutOfBoundsException er) {
                 System.out.println("ERROR...");
                 System.out.println(" ");
                 System.out.println("Por favor, introduce unos números válidos: ");
@@ -63,13 +63,97 @@ public class Practicas {
         int n3 = Integer.parseInt(String.valueOf(nc3));//convierto el primer valor en int
         char nc4 = suma2.charAt(3);//escojo el cuarto valor
         int n4 = Integer.parseInt(String.valueOf(nc4));//convierto el primer valor en int
-        int suma3 = n1+n2+n3+n4;//sumo los valores
+        int suma3 = n1 + n2 + n3 + n4;//sumo los valores
 
         System.out.println(" ");
-        System.out.println(dia1 +"+"+ mes1 +"+"+ anyo1 +" = "+ suma1);
-        System.out.println(n1 +"+"+ n2 +"+"+ n3 +"+"+ n4 +" = "+ suma3);
+        System.out.println(dia1 + "+" + mes1 + "+" + anyo1 + " = " + suma1);
+        System.out.println(n1 + "+" + n2 + "+" + n3 + "+" + n4 + " = " + suma3);
         System.out.println(" ");
-        System.out.println("Número de la suerte: "+ suma3);
+        System.out.println("Número de la suerte: " + suma3);
 
+    }
+
+
+    public void practica2() {
+
+        Scanner elec = new Scanner(System.in);
+
+        int eleccion = 0;
+        int num1 = 0;
+        int num2 = 0;
+        int resultado = 0;
+
+        System.out.println("------------CALCULADORA------------");
+        System.out.println(" ");
+        System.out.println("Por favor, introduce el primer operando: ");
+        num1 = elec.nextInt();
+
+        System.out.println("Elige la operación que deseas: ");
+        System.out.println("Sumar: +      Restar: -       Multiplicar: x       Dividir: /       Raíz: r");
+        System.out.println("");
+
+        String numelec = elec.next();
+        System.out.println("");
+
+        switch (numelec) {
+
+            case "+":
+                System.out.println("Has elegido sumar");
+
+                System.out.println("Introduce el segundo número");
+                num2 = elec.nextInt();
+
+                resultado = num1 + num2;
+                System.out.println("");
+                System.out.println("El resultado de la suma es " + resultado);
+
+                break;
+
+            case "-":
+                System.out.println("Has elegido restar");
+
+                System.out.println("Introduce el segundo número");
+                num2 = elec.nextInt();
+
+                resultado = num1 - num2;
+                System.out.println("");
+                System.out.println("El resultado de la resta es " + resultado);
+
+                break;
+
+            case "x":
+                System.out.println("Has elegido multiplicar");
+
+                System.out.println("Introduce el segundo número");
+                num2 = elec.nextInt();
+
+                resultado = num1 * num2;
+                System.out.println("");
+                System.out.println("El resultado de la multiplicación es " + resultado);
+
+                break;
+
+            case "/":
+                System.out.println("Has elegido dividir");
+
+                System.out.println("Introduce el segundo número");
+                num2 = elec.nextInt();
+
+                resultado = num1 / num2;
+                System.out.println("");
+                System.out.println("El resultado de la división es " + resultado);
+
+                break;
+
+            case "r":
+                System.out.println("Has elegido raíz cuadra");
+
+                resultado = (int) Math.sqrt(num1);
+                System.out.println("");
+                System.out.println("La raíz cuadrada de "+ num1 +" es " + resultado);
+
+                break;
+
+        }
     }
 }

@@ -35,7 +35,13 @@ public class Bateria {
 
     }
 
-    public void bateria_5(){
+    public void amplicion(){
+
+        Scanner entrada = new Scanner(System.in);
+
+        System.out.println("Dame tu altura en cm: ");
+
+        int altura = entrada.nextInt();
 
 
 

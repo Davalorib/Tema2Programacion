@@ -10,9 +10,17 @@ public class Main {
 //        Bateria bateria = new Bateria();
 //        bateria.bateria_1();
         //bateria.bateria_4();
+//        bateria.amplicion();
 
         Practicas practicas = new Practicas();
-        practicas.practica1();
+//        practicas.practica1();
+        practicas.practica2();
+
+//        Localdate localdate = new Localdate();
+//        localdate.generacion();
+
+//        Excepciones excepciones = new Excepciones();
+//        excepciones.excepcion();
 
     }
 }
