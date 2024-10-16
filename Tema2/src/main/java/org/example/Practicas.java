@@ -18,7 +18,7 @@ public class Practicas {
 
         while (r1) {
             try {
-                String fecha = entrada.nextLine();
+                String fecha = entrada.next();
 
                 char barra1 = fecha.charAt(2);//cojo la primera barra
                 char barra2 = fecha.charAt(5);//cojo la segunda barra
@@ -45,7 +45,7 @@ public class Practicas {
                     }
                 }
                 //el 1º para cuando coje algo que no es numero, el 2º para no poner letras, el 3º por si no se pone nada
-            } catch (NumberFormatException | InputMismatchException | StringIndexOutOfBoundsException er) {
+            } catch (NumberFormatException | InputMismatchException er) {
                 System.out.println("ERROR...");
                 System.out.println(" ");
                 System.out.println("Por favor, introduce unos números válidos: ");
