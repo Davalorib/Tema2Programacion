@@ -79,13 +79,14 @@ public class Practicas {
         Scanner elec = new Scanner(System.in);
 
         int eleccion = 0;
-        int num1 = 0;
-        int num2 = 0;
-        int resultado = 0;
+        float num1 = 0;
+        float num2 = 0;
+        float resultado = 0;
         boolean rep1 = true;
         boolean rep2 = true;
         boolean rep3 = true;
         boolean rep4 = true;
+        boolean rep5 = true;
 
         System.out.println("------------CALCULADORA------------");
         System.out.println(" ");
@@ -122,7 +123,7 @@ public class Practicas {
                             System.out.println("Has elegido sumar");
 
                             System.out.println("Introduce el segundo número");
-                            num2 = elec.nextInt();
+                            num2 = elec.nextFloat();
 
                             resultado = num1 + num2;
                             System.out.println(" ");
@@ -137,7 +138,7 @@ public class Practicas {
                             System.out.println("Has elegido restar");
 
                             System.out.println("Introduce el segundo número");
-                            num2 = elec.nextInt();
+                            num2 = elec.nextFloat();
 
                             resultado = num1 - num2;
                             System.out.println(" ");
@@ -150,7 +151,7 @@ public class Practicas {
                             System.out.println("Has elegido multiplicar");
 
                             System.out.println("Introduce el segundo número");
-                            num2 = elec.nextInt();
+                            num2 = elec.nextFloat();
 
                             resultado = num1 * num2;
                             System.out.println(" ");
@@ -165,7 +166,7 @@ public class Practicas {
                             System.out.println("Introduce el divisor: ");
 
                             while (rep3) {
-                                num2 = elec.nextInt();
+                                num2 = elec.nextFloat();
 
                                 if (num2 != 0) {
                                     rep3 = false;
@@ -184,12 +185,17 @@ public class Practicas {
                             rep2 = false;
                             System.out.println("Has elegido raíz cuadrada");
 
-                            if (num1 >= 0) {
-                                resultado = (int) Math.sqrt(num1);
-                                System.out.println(" ");
-                                System.out.println("La raíz cuadrada de " + num1 + " es " + resultado);
-                            } else {
-                                System.out.println("Elige un número positivo por favor: ");
+                            while (rep5) {
+                                if (num1 >= 0) {
+                                    resultado = (float) Math.sqrt(num1);
+                                    System.out.println(" ");
+                                    System.out.println("La raíz cuadrada de " + num1 + " es " + resultado);
+                                    rep5 = false;
+                                } else {
+                                    System.out.println("No puedo hacer la raíz cuadrada de un número negativo");
+                                    System.out.println("Elige un número positivo por favor: ");
+                                    num1 = elec.nextFloat();
+                                }
                             }
                             break;
 
@@ -199,9 +205,11 @@ public class Practicas {
 
                     }
                     break;
+
                 } catch (InputMismatchException er) {
                     System.out.println(" ");
-                    System.out.println("ERROR... Elige un valor válido: ");
+                    System.out.println("ERROR... Elige un valor válido");
+                    System.out.println(" ");
                     elec.nextLine();
 
                 }
