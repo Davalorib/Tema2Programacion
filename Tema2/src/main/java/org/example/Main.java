@@ -16,6 +16,7 @@ public class Main {
 //        practicas.practica1();
         practicas.practica2();
 
+        
 //        Localdate localdate = new Localdate();
 //        localdate.generacion();
 

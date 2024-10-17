@@ -82,78 +82,130 @@ public class Practicas {
         int num1 = 0;
         int num2 = 0;
         int resultado = 0;
+        boolean rep1 = true;
+        boolean rep2 = true;
+        boolean rep3 = true;
+        boolean rep4 = true;
 
         System.out.println("------------CALCULADORA------------");
         System.out.println(" ");
         System.out.println("Por favor, introduce el primer operando: ");
-        num1 = elec.nextInt();
+
+        while (rep1) {
+
+            try {
+                num1 = elec.nextInt();
+                rep1 = false;
+
+            } catch (InputMismatchException er) {
+                System.out.println(" ");
+                System.out.println("ERROR... Elige un valor válido: ");
+                elec.nextLine();
+            }
+        }
 
         System.out.println("Elige la operación que deseas: ");
-        System.out.println("Sumar: +      Restar: -       Multiplicar: x       Dividir: /       Raíz: r");
-        System.out.println("");
 
-        String numelec = elec.next();
-        System.out.println("");
+        while (rep2) {
+            System.out.println("Sumar: +      Restar: -       Multiplicar: x       Dividir: /       Raíz: r");
+            System.out.println(" ");
 
-        switch (numelec) {
+            String numelec = elec.next();
+            System.out.println(" ");
 
-            case "+":
-                System.out.println("Has elegido sumar");
+            while (rep4) {
+                try {
+                    switch (numelec) {
 
-                System.out.println("Introduce el segundo número");
-                num2 = elec.nextInt();
+                        case "+":
+                            rep2 = false;
+                            System.out.println("Has elegido sumar");
 
-                resultado = num1 + num2;
-                System.out.println("");
-                System.out.println("El resultado de la suma es " + resultado);
+                            System.out.println("Introduce el segundo número");
+                            num2 = elec.nextInt();
 
-                break;
+                            resultado = num1 + num2;
+                            System.out.println(" ");
+                            System.out.println("El resultado de la suma es " + resultado);
+                            rep4 = false;
 
-            case "-":
-                System.out.println("Has elegido restar");
 
-                System.out.println("Introduce el segundo número");
-                num2 = elec.nextInt();
+                            break;
 
-                resultado = num1 - num2;
-                System.out.println("");
-                System.out.println("El resultado de la resta es " + resultado);
+                        case "-":
+                            rep2 = false;
+                            System.out.println("Has elegido restar");
 
-                break;
+                            System.out.println("Introduce el segundo número");
+                            num2 = elec.nextInt();
 
-            case "x":
-                System.out.println("Has elegido multiplicar");
+                            resultado = num1 - num2;
+                            System.out.println(" ");
+                            System.out.println("El resultado de la resta es " + resultado);
 
-                System.out.println("Introduce el segundo número");
-                num2 = elec.nextInt();
+                            break;
 
-                resultado = num1 * num2;
-                System.out.println("");
-                System.out.println("El resultado de la multiplicación es " + resultado);
+                        case "x":
+                            rep2 = false;
+                            System.out.println("Has elegido multiplicar");
 
-                break;
+                            System.out.println("Introduce el segundo número");
+                            num2 = elec.nextInt();
 
-            case "/":
-                System.out.println("Has elegido dividir");
+                            resultado = num1 * num2;
+                            System.out.println(" ");
+                            System.out.println("El resultado de la multiplicación es " + resultado);
 
-                System.out.println("Introduce el segundo número");
-                num2 = elec.nextInt();
+                            break;
 
-                resultado = num1 / num2;
-                System.out.println("");
-                System.out.println("El resultado de la división es " + resultado);
+                        case "/":
+                            rep2 = false;
+                            System.out.println("Has elegido dividir");
 
-                break;
+                            System.out.println("Introduce el divisor: ");
 
-            case "r":
-                System.out.println("Has elegido raíz cuadra");
+                            while (rep3) {
+                                num2 = elec.nextInt();
 
-                resultado = (int) Math.sqrt(num1);
-                System.out.println("");
-                System.out.println("La raíz cuadrada de "+ num1 +" es " + resultado);
+                                if (num2 != 0) {
+                                    rep3 = false;
+                                    resultado = num1 / num2;
+                                    System.out.println(" ");
+                                    System.out.println("El resultado de la división es " + resultado);
 
-                break;
+                                } else {
+                                    System.out.println("ERROR... No se puede divir entre 0");
+                                    System.out.println("Introduce otro divisor: ");
+                                }
+                            }
+                            break;
 
+                        case "r":
+                            rep2 = false;
+                            System.out.println("Has elegido raíz cuadrada");
+
+                            if (num1 >= 0) {
+                                resultado = (int) Math.sqrt(num1);
+                                System.out.println(" ");
+                                System.out.println("La raíz cuadrada de " + num1 + " es " + resultado);
+                            } else {
+                                System.out.println("Elige un número positivo por favor: ");
+                            }
+                            break;
+
+                        default:
+                            System.out.println("ERROR... Elige uno de los siguientes caracteres:");
+                            break;
+
+                    }
+                    break;
+                } catch (InputMismatchException er) {
+                    System.out.println(" ");
+                    System.out.println("ERROR... Elige un valor válido: ");
+                    elec.nextLine();
+
+                }
+            }
         }
     }
 }
