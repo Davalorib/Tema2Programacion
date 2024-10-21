@@ -12,13 +12,14 @@ public class Main {
         //bateria.bateria_4();
 //        bateria.amplicion();
 
-//        Practicas practicas = new Practicas();
+        Practicas practicas = new Practicas();
 //        practicas.practica1();
 //        practicas.practica2();
+        practicas.practica3();
 
-        Bucles bucles = new Bucles();
+//        Bucles bucles = new Bucles();
 //        bucles.ej1();
-        bucles.ej2();
+//        bucles.ej2();
         
 //        Localdate localdate = new Localdate();
 //        localdate.generacion();

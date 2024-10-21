@@ -44,7 +44,7 @@ public class Practicas {
                         System.out.println("Por favor, introduce unos números válidos: ");
                     }
                 }
-                //el 1º para cuando coje algo que no es numero, el 2º para no poner letras, el 3º por si no se pone nada
+                //el 1º para cuando coge algo que no es numero, el 2º para no poner letras, el 3º por si no se pone nada
             } catch (NumberFormatException | InputMismatchException er) {
                 System.out.println("ERROR...");
                 System.out.println(" ");
@@ -215,5 +215,61 @@ public class Practicas {
                 }
             }
         }
+    }
+
+
+    public void practica3(){
+
+        Scanner ent = new Scanner(System.in);
+
+        int suma = 0;
+        int sumaf = 0;
+        int j = 10;
+
+        System.out.println("Escribe tu ISBN: ");
+        String isbn2 = ent.next();
+
+        for (int i=0; i<=10; i++){
+
+            char nc = isbn2.charAt(i);
+            int n = Integer.parseInt(String.valueOf(nc));
+            suma = n*j;
+            sumaf += suma;
+            j--;
+        }
+
+        System.out.println(sumaf);
+
+//        char n0c = isbn2.charAt(9);
+//        int n0 = Integer.parseInt(String.valueOf(n0c));
+//        char n1c = isbn2.charAt(8);
+//        int n1 = Integer.parseInt(String.valueOf(n1c));
+//        char n2c = isbn2.charAt(7);
+//        int n2 = Integer.parseInt(String.valueOf(n2c));
+//        char n3c = isbn2.charAt(6);
+//        int n3 = Integer.parseInt(String.valueOf(n3c));
+//        char n4c = isbn2.charAt(5);
+//        int n4 = Integer.parseInt(String.valueOf(n4c));
+//        char n5c = isbn2.charAt(4);
+//        int n5 = Integer.parseInt(String.valueOf(n5c));
+//        char n6c = isbn2.charAt(3);
+//        int n6 = Integer.parseInt(String.valueOf(n6c));
+//        char n7c = isbn2.charAt(2);
+//        int n7 = Integer.parseInt(String.valueOf(n7c));
+//        char n8c = isbn2.charAt(1);
+//        int n8 = Integer.parseInt(String.valueOf(n8c));
+//        char n9c = isbn2.charAt(0);
+//        int n9 = Integer.parseInt(String.valueOf(n9c));
+
+//        int suma = n9*10 + n8*9 + n7*8 + n6*7 + n5*6 + n4*5 + n3*4 + n2*3 + n1*2 + n0;
+//        sumaf %= 11;
+//
+//        if (sumaf == 0){
+//            System.out.println("Tu ISBN es válido");
+//
+//        } else {
+//            System.out.println("Tu ISBN no es válido");
+//
+//        }
     }
 }
