@@ -1,5 +1,6 @@
 package org.example;
 
+import javax.swing.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -218,58 +219,112 @@ public class Practicas {
     }
 
 
-    public void practica3(){
+    public void practica3() {
 
         Scanner ent = new Scanner(System.in);
 
         int suma = 0;
         int sumaf = 0;
         int j = 10;
+        int i;
+        boolean a = true;
 
-        System.out.println("Escribe tu ISBN: ");
-        String isbn2 = ent.next();
+        while (a) {
+            try {
+                System.out.println("Escribe tu ISBN: ");
+                String isbn = ent.next();
+                char c = isbn.charAt(9);
 
-        for (int i=0; i<=10; i++){
+                for (int h = 0; h <= 9; h++){
 
-            char nc = isbn2.charAt(i);
-            int n = Integer.parseInt(String.valueOf(nc));
-            suma = n*j;
-            sumaf += suma;
-            j--;
+                    char nch = isbn.charAt(h);
+
+                    if (nch == '?'){
+
+                        int posi = isbn.lastIndexOf('?');
+
+                        if (c == 'X') {
+                            for (i = 0; i < posi; i++) {
+
+                                char nc = isbn.charAt(i);
+                                int n = Integer.parseInt(String.valueOf(nc));
+                                suma = n * j;
+                                sumaf += suma;
+                                j--;
+                            }
+                            for (i = posi+1; i <= 8; i++) {
+
+                                char nc = isbn.charAt(i);
+                                int n = Integer.parseInt(String.valueOf(nc));
+                                suma = n * j;
+                                sumaf += suma;
+                                j--;
+                            }
+                            sumaf += 10;
+
+                        } else {
+                            for (i = 0; i < posi; i++) {
+
+                                char nc = isbn.charAt(i);
+                                int n = Integer.parseInt(String.valueOf(nc));
+                                suma = n * j;
+                                sumaf += suma;
+                                j--;
+                            }
+                            for (i = posi+1; i <= 9; i++) {
+
+                                char nc = isbn.charAt(i);
+                                int n = Integer.parseInt(String.valueOf(nc));
+                                suma = n * j;
+                                sumaf += suma;
+                                j--;
+                            }
+                        }
+
+                        a = false;
+
+
+                    } else {
+
+                        if (c == 'X') {
+                            for (i = 0; i <= 8; i++) {
+
+                                char nc = isbn.charAt(i);
+                                int n = Integer.parseInt(String.valueOf(nc));
+                                suma = n * j;
+                                sumaf += suma;
+                                j--;
+                            }
+                            sumaf += 10;
+
+                        } else {
+                            for (i = 0; i <= 9; i++) {
+
+                                char nc = isbn.charAt(i);
+                                int n = Integer.parseInt(String.valueOf(nc));
+                                suma = n * j;
+                                sumaf += suma;
+                                j--;
+                            }
+                        }
+
+                        a = false;
+                        sumaf %= 11;
+
+                        if (sumaf == 0) {
+                            System.out.println("Tu ISBN es válido");
+
+                        } else {
+                            System.out.println("Tu ISBN no es válido");
+
+                        }
+                    }
+                }
+
+            } catch (InputMismatchException | StringIndexOutOfBoundsException er) {
+                System.out.println("ERROR. Elige un ISBN con sus 10 valores.");
+                System.out.println(" ");
+            }
         }
-
-        System.out.println(sumaf);
-
-//        char n0c = isbn2.charAt(9);
-//        int n0 = Integer.parseInt(String.valueOf(n0c));
-//        char n1c = isbn2.charAt(8);
-//        int n1 = Integer.parseInt(String.valueOf(n1c));
-//        char n2c = isbn2.charAt(7);
-//        int n2 = Integer.parseInt(String.valueOf(n2c));
-//        char n3c = isbn2.charAt(6);
-//        int n3 = Integer.parseInt(String.valueOf(n3c));
-//        char n4c = isbn2.charAt(5);
-//        int n4 = Integer.parseInt(String.valueOf(n4c));
-//        char n5c = isbn2.charAt(4);
-//        int n5 = Integer.parseInt(String.valueOf(n5c));
-//        char n6c = isbn2.charAt(3);
-//        int n6 = Integer.parseInt(String.valueOf(n6c));
-//        char n7c = isbn2.charAt(2);
-//        int n7 = Integer.parseInt(String.valueOf(n7c));
-//        char n8c = isbn2.charAt(1);
-//        int n8 = Integer.parseInt(String.valueOf(n8c));
-//        char n9c = isbn2.charAt(0);
-//        int n9 = Integer.parseInt(String.valueOf(n9c));
-
-//        int suma = n9*10 + n8*9 + n7*8 + n6*7 + n5*6 + n4*5 + n3*4 + n2*3 + n1*2 + n0;
-//        sumaf %= 11;
-//
-//        if (sumaf == 0){
-//            System.out.println("Tu ISBN es válido");
-//
-//        } else {
-//            System.out.println("Tu ISBN no es válido");
-//
-//        }
     }
 }
