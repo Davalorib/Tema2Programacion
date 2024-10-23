@@ -227,102 +227,71 @@ public class Practicas {
         int sumaf = 0;
         int j = 10;
         int i;
+        int h;
         boolean a = true;
 
         while (a) {
-            try {
+            try { //el try
                 System.out.println("Escribe tu ISBN: ");
                 String isbn = ent.next();
-                char c = isbn.charAt(9);
+                int tamanyo = isbn.length(); //nos calcula el tamaño de nuestra entrada
 
-                for (int h = 0; h <= 9; h++){
+                if (tamanyo != 10) { //si no hemos puesto 10 caracteres muestra un mensaje y con un continue volvemos a pedir el isbn
+                    System.out.println("ERROR... El ISBN tiene que tener 10 caracteres");
+                    continue;
+                }
 
-                    char nch = isbn.charAt(h);
+                int pos = isbn.lastIndexOf("?"); //nos mira la posicion de '?'
 
-                    if (nch == '?'){
+                for (i = 0; i <= 9; i++) { //bucle for
 
-                        int posi = isbn.lastIndexOf('?');
+                    char nc = isbn.charAt(i); //vamos cogiendo las posiciones
 
-                        if (c == 'X') {
-                            for (i = 0; i < posi; i++) {
+                    if (nc == 'X') { //si se encuentra una X suma 10 y con un continue hacemos el siguiente for
+                        sumaf += 10;
+                        j--;
+                        continue;
 
-                                char nc = isbn.charAt(i);
-                                int n = Integer.parseInt(String.valueOf(nc));
-                                suma = n * j;
-                                sumaf += suma;
-                                j--;
-                            }
-                            for (i = posi+1; i <= 8; i++) {
+                    } else if (nc == '?') { //si se encuentra un ? no hace ninguna operacion y hacemos el siguiente for
+                        j--;
+                        continue;
+                    }
 
-                                char nc = isbn.charAt(i);
-                                int n = Integer.parseInt(String.valueOf(nc));
-                                suma = n * j;
-                                sumaf += suma;
-                                j--;
-                            }
-                            sumaf += 10;
+                    int n = Integer.parseInt(String.valueOf(nc)); //convertimos el valor nc de char a int
+                    suma = n * j; //una variable suma en la que multiplicamos ese valor por j (en este primer ciclo es 10)
+                    sumaf += suma; //una variable sumaf en la que vamos sumando la variable suma y actualizando el valor cada vez
+                    j--; //restamos 1 a j (en este primer ciclo 10-1)
+                }
 
-                        } else {
-                            for (i = 0; i < posi; i++) {
+                a = false; //negamos el booleano para que no repita nada (lo podria haber negado antes pero da igual)
 
-                                char nc = isbn.charAt(i);
-                                int n = Integer.parseInt(String.valueOf(nc));
-                                suma = n * j;
-                                sumaf += suma;
-                                j--;
-                            }
-                            for (i = posi+1; i <= 9; i++) {
+                if (pos != -1) { //si no encuentra ningun '?', lo almacena como -1, entonces este if funciona solo cuando hay algun '?'
+                    int rep = 10-pos; //una variable rep en la que restamos 10 a la posicion para quedarnos con el valor que deberia multiplicarse
 
-                                char nc = isbn.charAt(i);
-                                int n = Integer.parseInt(String.valueOf(nc));
-                                suma = n * j;
-                                sumaf += suma;
-                                j--;
-                            }
+                    for (h = 1; h<=10; h++){ //otro for para ir haciendo ciclos hasta encontrar el número válido
+                        int rep2 = rep*h+sumaf; //una variable rep2 en la que vamos multiplicando la variable rep por números del 1 al 10 y luego añadiendolos a sumaf
+                        if (rep2%11 == 0){ //cuando al dividir rep2 entre 11 nos de resto 0, terminamos el for con un break, guardandonos así el número correcto
+                            break;
                         }
+                    }
 
-                        a = false;
+                    System.out.println("El dígito que te falta es "+ (h == 10 ? "X" : h)); //añadí lo que vimos en clase porque me gustó para estos casos de print, si está al final el '?' y es 10 lo reemplaza por X
+                    String reemplazo = isbn.replace("?", ""+h); //esto reemplaza el '?' por su número correcto
+                    String reemplazoX = isbn.replace("?", "X"); //esto reemplaza el '?' por X
+                    System.out.println("Quedando así: "+ (h == 10? reemplazoX: reemplazo)); //me parecía guay que actualizase el número corrigiendolo, esto lo hace con lo que vimos en clase que ya he dicho que me gusto para estos casos
 
+                } else {
 
-                    } else {
+                    if (sumaf%11 == 0) { //si el porcentaje de sumaf es 0 te dice que es valido
+                        System.out.println("Tu ISBN es válido");
 
-                        if (c == 'X') {
-                            for (i = 0; i <= 8; i++) {
-
-                                char nc = isbn.charAt(i);
-                                int n = Integer.parseInt(String.valueOf(nc));
-                                suma = n * j;
-                                sumaf += suma;
-                                j--;
-                            }
-                            sumaf += 10;
-
-                        } else {
-                            for (i = 0; i <= 9; i++) {
-
-                                char nc = isbn.charAt(i);
-                                int n = Integer.parseInt(String.valueOf(nc));
-                                suma = n * j;
-                                sumaf += suma;
-                                j--;
-                            }
-                        }
-
-                        a = false;
-                        sumaf %= 11;
-
-                        if (sumaf == 0) {
-                            System.out.println("Tu ISBN es válido");
-
-                        } else {
-                            System.out.println("Tu ISBN no es válido");
-
-                        }
+                    } else { //sino es invalido
+                        System.out.println("Tu ISBN no es válido");
                     }
                 }
 
-            } catch (InputMismatchException | StringIndexOutOfBoundsException er) {
-                System.out.println("ERROR. Elige un ISBN con sus 10 valores.");
+            } catch (InputMismatchException | NumberFormatException er) { //el catch
+                System.out.println("ERROR... Solo puedes utilizar números, '?' o 'X'");
                 System.out.println(" ");
             }
         }
