@@ -238,7 +238,30 @@ public class Practicas {
 
                 if (tamanyo != 10) { //si no hemos puesto 10 caracteres muestra un mensaje y con un continue volvemos a pedir el isbn
                     System.out.println("ERROR... El ISBN tiene que tener 10 caracteres");
+                    System.out.println(" ");
                     continue;
+                }
+
+                String reemX = isbn.replace("X", ""); //reemplazo las X por nada
+                int tamanyoX = reemX.length(); //medimos el nuevo numero reemplazado
+
+                int finalX = tamanyo-tamanyoX; //restamos el numero con X menos el sin X
+
+                if (finalX != 1 && finalX != 0){ //si esa resta es distinta de 1 y 0
+                    System.out.println("ERROR... Solo puedes poner una X"); //dice que solo puedes poner una
+                    System.out.println(" ");
+                    continue; //volvemos
+                }
+
+                String reemSigno = isbn.replace("?", ""); //reemplazo las ? por nada
+                int tamanyoSigno = reemSigno.length(); //medimos el nuevo numero reemplazado
+
+                int finalSigno = tamanyo-tamanyoSigno; //restamos el numero con ? menos el sin ?
+
+                if (finalSigno != 1 && finalSigno != 0){ //si esa resta es distinta de 1 y 0
+                    System.out.println("ERROR... Solo puedes poner una ?"); //dice que solo puedes poner una
+                    System.out.println(" ");
+                    continue; //volvemos
                 }
 
                 int pos = isbn.lastIndexOf("?"); //nos mira la posicion de '?'
