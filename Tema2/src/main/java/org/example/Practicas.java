@@ -1,6 +1,5 @@
 package org.example;
 
-import javax.swing.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -251,6 +250,10 @@ public class Practicas {
                     System.out.println("ERROR... Solo puedes poner una X"); //dice que solo puedes poner una
                     System.out.println(" ");
                     continue; //volvemos
+                } else if (isbn.indexOf("X") != 9 && finalX == 1) { //si hay una X y no está en la última posición
+                    System.out.println("ERROR... La 'X' solo puede estar al final"); //dice que solo puede estar al final
+                    System.out.println(" ");
+                    continue; //volvemos
                 }
 
                 String reemSigno = isbn.replace("?", ""); //reemplazo las ? por nada
@@ -259,7 +262,7 @@ public class Practicas {
                 int finalSigno = tamanyo-tamanyoSigno; //restamos el numero con ? menos el sin ?
 
                 if (finalSigno != 1 && finalSigno != 0){ //si esa resta es distinta de 1 y 0
-                    System.out.println("ERROR... Solo puedes poner una ?"); //dice que solo puedes poner una
+                    System.out.println("ERROR... Solo puedes poner una '?'"); //dice que solo puedes poner una
                     System.out.println(" ");
                     continue; //volvemos
                 }
@@ -319,4 +322,6 @@ public class Practicas {
             }
         }
     }
+
+    
 }
