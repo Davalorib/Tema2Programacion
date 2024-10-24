@@ -12,10 +12,10 @@ public class Main {
         //bateria.bateria_4();
 //        bateria.amplicion();
 
-        Practicas practicas = new Practicas();
+//        Practicas practicas = new Practicas();
 //        practicas.practica1();
 //        practicas.practica2();
-        practicas.practica3();
+//        practicas.practica3();
 
 //        Bucles bucles = new Bucles();
 //        bucles.ej1();
@@ -26,6 +26,13 @@ public class Main {
 
 //        Excepciones excepciones = new Excepciones();
 //        excepciones.excepcion();
+
+        Aleatorios aleatorios = new Aleatorios();
+//        aleatorios.random();
+//        aleatorios.ej1();
+//        aleatorios.ej2();
+//        aleatorios.ej3();
+        aleatorios.ej4();
 
     }
 }
